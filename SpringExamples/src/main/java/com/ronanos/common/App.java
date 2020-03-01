@@ -24,7 +24,7 @@ public class App
 {
 	public static void main( String[] args )
 	{
-		System.out.println( "Hello World from Syste out" );
+		System.out.println( "Hello World from System out" );
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				"Spring-Module.xml");
 
