@@ -14,6 +14,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ronanos.customer.dao.CustomerDAO;
 import com.ronanos.customer.model.Customer;
+import com.ronanos.output.IOutputGenerator;
+import com.ronanos.output.OutputHelper;
+import com.ronanos.output.SpringOutputHelper;
+import com.ronanos.output.impl.CsvOutputGenerator;
 
 
 /**
@@ -43,5 +47,40 @@ public class App
 		if (customer1 != null) {
 			System.out.println(customer1);
 		}
+
+
+		//		CustomerDAO customerDAOtemplate = (CustomerDAO) context.getBean("customerDAOtemplate");
+		//		Customer newCustomer = new Customer(3, "ronanos",40);
+		//
+		//		Customer customer2 = customerDAOtemplate.findByCustomerId(3);
+		//		if (customer2 == null) {
+		//			customerDAOtemplate.insert(newCustomer);	
+		//			customer2 = customerDAO.findByCustomerId(3);
+		//		}
+		//
+		//		if (customer2 != null) {
+		//			System.out.println(customer2);
+		//		}
+		//		
+
+		// Direct call
+		// Tightly coupled
+		IOutputGenerator output = new CsvOutputGenerator();
+		output.generateOutput();
+
+		// Helper class
+		// less coupled but still coupled
+		OutputHelper outputHelper = new OutputHelper();
+		outputHelper.generateOutput(); 
+
+
+		// Spring
+		// Use Dependency Injection which only involves changing the XML file.
+		ApplicationContext context2 = 
+				new ClassPathXmlApplicationContext(new String[] {"Spring-Common.xml"});
+
+		SpringOutputHelper output2 = (SpringOutputHelper)context2.getBean("SpringOutputHelper");
+		output2.generateOutput();
+
 	}
 }
