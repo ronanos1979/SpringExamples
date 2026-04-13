@@ -7,3 +7,10 @@ CREATE TABLE `customer` (
   `AGE` int(10) unsigned NOT NULL,
   PRIMARY KEY (`CUST_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE customer (
+                          cust_id  SERIAL PRIMARY KEY,
+                          name     VARCHAR(100) NOT NULL,
+                          age      INTEGER      NOT NULL
+);

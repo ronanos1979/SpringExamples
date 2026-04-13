@@ -4,7 +4,8 @@
            http://www.springframework.org/schema/beans
            https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <import resource="database/Spring-Datasource-MySQL.xml" />
+    <!-- <import resource="database/Spring-Datasource-MySQL.xml" /> -->
+    <import resource="database/Spring-Datasource-Postgresql.xml" />
     <import resource="customer/Spring-Customer.xml" />
 
     <bean id="helloBean" class="com.ronanos.common.HelloWorld">
